@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 from sys import argv
-if __name__ == "__main__":
-n=len(argv);
-if (n == 1):
-    print("1 argument :")
-else:
-  print(f"{n} argument :")
 
-for i in range(n):
-    print(f"{i+1}: {argv[i]}")
+if __name__ == "__main__":
+    count = len(argv) - 1
+
+    if count == 0:
+        print("0 arguments.")
+    else:
+        print("{} argument{}:".format(count, "" if count == 1 else "s"))
+
+        for i in range(1, len(argv)):
+            print("{}: {}".format(i, argv[i]))
