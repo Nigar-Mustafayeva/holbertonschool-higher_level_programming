@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a Rectangle class with width, height, and instance tracking.
+This module defines a Rectangle class with width, height, and instance count.
 
 Features:
 - Private attributes with validation
@@ -84,7 +84,7 @@ class Rectangle:
         """Return a string representation using '#' characters."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        return "\n".join(["#" * self.__width for _ in range(self.__height)])
+        return "\n".join("#" * self.__width for _ in range(self.__height))
 
     def __repr__(self):
         """Return a string to recreate the rectangle via eval()."""
