@@ -24,7 +24,6 @@ class Rectangle:
         area(): Returns the rectangle area.
         perimeter(): Returns the rectangle perimeter.
         __str__(): Prints the rectangle with '#' characters.
-        __repr__(): Returns a string representation to recreate the object.
     """
 
     def __init__(self, width=0, height=0):
@@ -79,7 +78,3 @@ class Rectangle:
             return ""
         lines = ["#" * self.__width for _ in range(self.__height)]
         return "\n".join(lines)
-
-    def __repr__(self):
-        """Return a string that can recreate the rectangle object."""
-        return f"{self.__class__.__name__}({self.__width}, {self.__height})"
