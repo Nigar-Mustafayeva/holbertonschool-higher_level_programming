@@ -1,13 +1,31 @@
 #!/usr/bin/python3
 """
-This module defines a Rectangle class with private width and height attributes.
+This module defines a Rectangle class.
+
+The Rectangle class includes private width and height attributes
+with property getters and setters that validate the input.
+It can be used to create and manage rectangle objects.
 """
 
+
 class Rectangle:
-    """Represents a rectangle with width and height."""
+    """
+    Represents a rectangle with width and height.
+
+    Private instance attributes:
+        __width (int): The width of the rectangle (must be >= 0)
+        __height (int): The height of the rectangle (must be >= 0)
+
+    Properties:
+        width (int): Getter and setter for the width attribute.
+        height (int): Getter and setter for the height attribute.
+
+    The setters raise exceptions if values are not integers
+    or are less than 0.
+    """
 
     def __init__(self, width=0, height=0):
-        """Initialize the rectangle with optional width and height."""
+        """Initialize a Rectangle with optional width and height."""
         self.width = width
         self.height = height
 
@@ -27,14 +45,4 @@ class Rectangle:
 
     @property
     def height(self):
-        """Getter for the height attribute."""
-        return self.__height
-
-    @height.setter
-    def height(self, value):
-        """Setter for the height attribute with validation."""
-        if not isinstance(value, int):
-            raise TypeError("height must be an integer")
-        if value < 0:
-            raise ValueError("height must be >= 0")
-        self.__height = value
+        """Getter for the height
