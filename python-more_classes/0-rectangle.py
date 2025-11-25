@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""Thsi class is used for Rectangle 
-
-This creates the simple class
-    which defines as Rectangle"""
+#Thsi class is used for Rectangle 
 class Rectangle:
+    #This code creates the Rectangle
     pass
