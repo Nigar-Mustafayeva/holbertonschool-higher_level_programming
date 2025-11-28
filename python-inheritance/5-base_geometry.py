@@ -8,4 +8,3 @@ class BaseGeometry:
     This is the class documentation
     """
     pass
-
