@@ -6,7 +6,7 @@ This is module documentation
 Rectangle = __import__('9-rectangle').Rectangle
 
 
-class Square(Regtangle):
+class Square(Rectangle):
     """
     This is class documentation
     """
@@ -18,6 +18,6 @@ class Square(Regtangle):
 
     def area(self):
         return self.__size ** 2
-    
+
     def __str__(self):
-        return f"[Square]{width}/{height}"
+        return f"[Square] {self.__size}/{self.__size}"
