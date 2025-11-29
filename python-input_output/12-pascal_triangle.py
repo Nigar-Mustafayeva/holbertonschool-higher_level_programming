@@ -7,10 +7,8 @@ Pascal's Triangle module
 def pascal_triangle(n):
     """
     Returns a list of lists of integers representing Pascal's triangle of n.
-    
     Args:
         n (int): Number of rows of the triangle
-    
     Returns:
         list: Pascal's triangle as a list of lists
     """
