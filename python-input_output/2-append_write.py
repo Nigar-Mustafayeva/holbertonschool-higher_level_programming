@@ -3,6 +3,7 @@
 This is module documentation
 """
 
+
 def append_write(filename="", text=""):
     """
     This is function documentation
