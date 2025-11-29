@@ -6,6 +6,7 @@ This is module documentation
 
 Rectangle = __import__('9-rectangle').Rectangle
 
+
 class Square(Rectangle):
     """
     This is class documentation
