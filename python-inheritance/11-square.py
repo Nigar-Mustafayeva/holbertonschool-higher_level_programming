@@ -3,7 +3,6 @@
 This is module documentation
 """
 
-
 Rectangle = __import__('9-regtangle').Rectangle
 
 
