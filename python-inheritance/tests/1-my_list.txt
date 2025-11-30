@@ -1,9 +1,9 @@
 """
 Testing MyList class
 
->>> MyList = __import__('my_list_1_6').MyList
+>>> MyList = __import__('1-my_list').MyList
 
-# Test: create an empty list
+# Test: empty list
 >>> my_list = MyList()
 >>> my_list
 []
@@ -33,7 +33,7 @@ Testing MyList class
 >>> neg_list  # original list unchanged
 [-10, 5, -3]
 
-# Test: single element list
+# Test: single element
 >>> single_list = MyList()
 >>> single_list.append(42)
 >>> single_list
