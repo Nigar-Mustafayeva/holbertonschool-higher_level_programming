@@ -2,4 +2,4 @@
 USE hbtn_0c_0;
 
 -- Print tha table then
-SHOW * FROM first_table;
+SELECT * FROM first_table;
