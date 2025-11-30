@@ -1,24 +1,25 @@
 #!/usr/bin/python3
-"""BaseGeometry module"""
+"""BaseGeometry module."""
 
 
 class BaseGeometry:
-    """Base class for geometry operations"""
+    """BaseGeometry class."""
 
     def area(self):
-        """Raises an exception since area is not implemented"""
+        """Raise an exception because area is not implemented."""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
         """
-        Validates that value is a positive integer
+        Validate that value is a positive integer.
         Args:
-            name (str): name of the variable
-            value (int): value to validate
+            name (str): parameter name used in error messages
+            value: value to validate
         Raises:
             TypeError: if value is not an integer
             ValueError: if value <= 0
         """
+        # Use exact type check so booleans (True/False) are rejected
         if type(value) is not int:
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
