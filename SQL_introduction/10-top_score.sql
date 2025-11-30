@@ -1,1 +1,4 @@
-SELECT score, name FROM second_table ORDER BY score;
+-- List ordered
+SELECT score, name
+FROM second_table
+ORDER BY score;
