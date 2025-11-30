@@ -8,7 +8,7 @@
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [Exception] area() is not implemented
 >>> 
->>> # Valid integers should pass without output
+>>> # Valid integer should produce no output
 >>> bg.integer_validator("age", 1)
 >>> 
 >>> # Zero and negative integers raise ValueError
@@ -23,7 +23,7 @@
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [ValueError] age must be greater than 0
 >>> 
->>> # Non-integer types must raise TypeError
+>>> # Non-integer types must raise TypeError (exact messages)
 >>> try:
 ...     bg.integer_validator("age", "4")
 ... except Exception as e:
