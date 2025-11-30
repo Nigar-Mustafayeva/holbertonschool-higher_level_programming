@@ -1,5 +1,2 @@
--- select database first
-USE hbtn_0c_0;
-
--- print all fields
+-- List all rows and all columns from first_table
 SELECT * FROM first_table;
