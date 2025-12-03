@@ -2,16 +2,19 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
+
 class MyHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         """Handle GET requests and serve endpoints."""
         if self.path == '/':
+            # Root endpoint
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
 
         elif self.path == '/data':
+            # /data endpoint returns JSON
             data = {"name": "John", "age": 30, "city": "New York"}
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
@@ -19,13 +22,14 @@ class MyHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(data).encode())
 
         elif self.path == '/status':
-            status = {"status": "OK"}
+            # /status endpoint returns plain text "OK"
             self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+            self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write(json.dumps(status).encode())
+            self.wfile.write(b"OK")
 
         else:
+            # Undefined endpoints return 404
             self.send_response(404)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
