@@ -3,11 +3,8 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-# In-memory users storage
-users = {
-    "jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"},
-    "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}
-}
+# Start with an empty dictionary
+users = {}
 
 @app.route('/')
 def home():
