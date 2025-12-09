@@ -1,18 +1,3 @@
-"""
-task_02_logic.py
-
-Flask app extension for Task 02: Jinja logic (loops and conditionals).
-
-This file adds a /items route that reads items.json and renders
-templates/items.html which demonstrates Jinja's {% for %} loop and
-{% if %} conditional to display a list or a "No items found" message.
-
-Run:
-    python task_02_logic.py
-
-Then open http://127.0.0.1:5000/items
-"""
-
 import os
 import json
 from flask import Flask, render_template, abort
@@ -53,47 +38,55 @@ ITEMS_TEMPLATE = """<!doctype html>
 # Default JSON data
 DEFAULT_ITEMS = {"items": ["Python Book", "Flask Mug", "Jinja Sticker"]}
 
-
 def ensure_templates_and_data():
     """Ensure templates/ exists and items.json + items.html are present."""
     templates_dir = 'templates'
     if not os.path.isdir(templates_dir):
         os.makedirs(templates_dir, exist_ok=True)
 
+    # Create items.html if not exists
     items_html_path = os.path.join(templates_dir, 'items.html')
     if not os.path.exists(items_html_path):
         with open(items_html_path, 'w', encoding='utf-8') as f:
             f.write(ITEMS_TEMPLATE)
 
-    # Ensure items.json exists
+    # Ensure items.json exists with default content
     json_path = 'items.json'
     if not os.path.exists(json_path):
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(DEFAULT_ITEMS, f, indent=4)
 
+    # Ensure header.html exists
+    header_html_path = os.path.join(templates_dir, 'header.html')
+    if not os.path.exists(header_html_path):
+        with open(header_html_path, 'w', encoding='utf-8') as f:
+            f.write("<header><h1>Welcome to the Items Page</h1></header>")
+
+    # Ensure footer.html exists
+    footer_html_path = os.path.join(templates_dir, 'footer.html')
+    if not os.path.exists(footer_html_path):
+        with open(footer_html_path, 'w', encoding='utf-8') as f:
+            f.write("<footer><p>&copy; 2025 Flask App</p></footer>")
 
 @app.route('/items')
 def items():
     json_path = 'items.json'
     if not os.path.exists(json_path):
-        # In production you might want to return a 404 or a default page.
+        # Return 404 if the file is not found
         abort(404, description='Data file not found')
 
     try:
         with open(json_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
+    except json.JSONDecodeError:
+        abort(500, description='Invalid JSON format in items.json')
     except Exception as e:
-        # If JSON is malformed or unreadable, respond with 500
+        # Handle other exceptions
         abort(500, description=f'Error reading data file: {e}')
 
-    items_list = data.get('items') if isinstance(data, dict) else None
-
-    # Ensure we pass a list (or empty list) to the template
-    if not isinstance(items_list, list):
-        items_list = []
+    items_list = data.get('items') if isinstance(data, dict) else []
 
     return render_template('items.html', items=items_list)
-
 
 if __name__ == '__main__':
     ensure_templates_and_data()
